@@ -1,0 +1,38 @@
+# =========================
+# BACKEND (Python)
+# =========================
+
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.env
+
+# SQLite (if you use it)
+*.db
+
+# =========================
+# FRONTEND (React)
+# =========================
+
+node_modules/
+build/
+
+# =========================
+# GENERAL
+# =========================
+
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# IDEs
+.vscode/
+.idea/
+
+# OS files
+*.swp
