@@ -1,13 +1,13 @@
-import { Pause, Camera, PlayCircle, Ruler } from 'lucide-react'
+import { Pause, Camera, Film, Ruler } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 export function BottomToolbar() {
   return (
     <div className="flex gap-3">
       <Button
-        className="bg-[#020618] hover:bg-[#4a321d] text-amber-500 border border-[#1D293D] px-6 gap-2"
+        className="bg-[#3A1F0D] hover:bg-[#4A2D1A] text-[#F59E0B] border border-[#4A2D1A] px-6 gap-2"
       >
-        <span className="w-2 h-4 bg-amber-500 rounded-sm inline-block mr-1"></span> {/* Freeze icon mock */}
+        <Pause className="w-4 h-4 fill-current" />
         Freeze
       </Button>
 
@@ -21,7 +21,7 @@ export function BottomToolbar() {
       <Button
         className="flex-1 bg-[#1A2235] hover:bg-[#2A3042] text-[#A5B4D3] border border-[#2A3042] gap-2"
       >
-        <PlayCircle className="w-4 h-4" />
+        <Film className="w-4 h-4" />
         Cine Loop
       </Button>
 
