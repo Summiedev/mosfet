@@ -1,41 +1,71 @@
-Product Overview
+## RadFlow: Real-Time Radiology Workflow Assistant
 
-RadFlow is a real-time radiology workflow assistant designed to improve the speed, accuracy, and safety of ultrasound in high-volume, resource-constrained hospital environments.
+RadFlow is a real-time radiology workflow assistant designed to improve the speed, accuracy, and safety of ultrasound in high-volume, resource-constrained hospital environments. It streamlines the entire ultrasound workflow, from patient registration to scan review and report generation, with a focus on usability and automation.
+
+---
+
+## 🌐 Live Demo
+Access the project at: [https://mosfet.onrender.com/]
+
+---
+
+## 🔑 Login Credentials
+**Admin**  
+Email: `admin23@gmail.com`  
+Password: `SecurdeP@sseeword123`
+
+---
+
+## How RadFlow Works
+1. **Login:** Use the admin credentials above to access the system.
+2. **Add a Patient:** Go to the dashboard, enter patient details, and select or input the clinical context.
+3. **Start Scan:** Begin the ultrasound session.
+4. **View Scans:** Access simulated ultrasound videos (breast, fetal, abdominal).
+5. **Alerts:** Receive alerts when a scan is completed or an abnormality is detected.
+6. **Review Abnormalities:** Radiologists can review alerts, confirm findings, and capture relevant images.
+7. **Finalize Reports:** Review and complete the scan reports.
+8. **Backend Integration:** All data is stored and retrieved via the Node.js/MongoDB backend.
+
+> **Note:** Features like automated reporting currently use dummy data for demonstration purposes.
+
+---
+
+##  Technical Details
+- **Monorepo:** Frontend (Next.js/React + Tailwind CSS) and backend (FastAPI, Python, MongoDB) integrated in a single repository.
+- **Notifications & Simulations:** Dummy data is used for notifications and ultrasound video simulations.
+- **Backend:** FastAPI (Python) with MongoDB for data storage.
+- **Frontend:** Next.js (React) for a modern, responsive UI.
+- **Authentication:** JWT-based authentication for secure access.
+- **Environment Variables:** See `backend/.env.example` for required variables.
+
+---
+
+## Backend Repository
+[Backend Source Code](https://github.com/Summiedev/mosfet/tree/main/backend)
+
+---
 
 
-To access the project, open the URL
-Open your preferred browser (Chrome, Firefox, Edge)
-Go to:
-https://mosfet.onrender.com/
+## Team Members & Contributions
 
+### 1. Apatira Sumayyah — Core Architect & Backend Developer
+- Led the overall system architecture and design.
+- Implemented complex business logic and handled integration between frontend and backend modules.
+- Ensured seamless workflow and robust error handling across the application.
 
-Login Credentials
+### 2. Shotunde Maryam — Backend/API Developer
+- Designed and developed RESTful APIs for all major features.
+- Managed database operations, schema design, and data integrity.
+- Implemented authentication and authorization mechanisms.
 
-Use the credentials you added in your README for testing:
+### 3. Bolarinwa Abdullah — Frontend Developer
+- Built and styled the user interface components.
+- Integrated frontend with backend APIs for real-time data flow.
+- Focused on responsive design and user experience improvements.
 
-Admin:
-Email: admin23@gmail.com
-Password: SecurdeP@sseeword123
+### 4. Apatira Sofiyyah — UI/UX Designer
+- Led user research and requirements gathering.
+- Designed the entire user experience and interface using Figma.
+- Ensured accessibility and usability best practices throughout the design.
 
-How It Works
-Login: Use the admin credentials above to access the system.
-Add a Patient: Go to the dashboard, enter patient details, and select or input the clinical context.
-Start Scan: Begin the ultrasound session.
-View Scans: Access simulated ultrasound videos (breast, fetal, abdominal).
-Notifications: Receive alerts when a scan is completed or an abnormality is detected.
-Review Abnormalities: Radiologists can review alerts, confirm findings, and capture relevant images.
-Finalize Reports: Review and complete the scan reports.
-Backend Integration: All data is stored and retrieved via the Node.js/MongoDB backend.
-
-Note: Features like automated reporting currently use dummy data for demonstration purposes.
-
-Backend Repository
-https://github.com/Summiedev/mosfet/tree/fea022af19d26fb6b4eae0210f1613c987b627f8/backend 
-
-
-Technical Details
-Frontend and backend integrated into a single workflow
-Notifications and ultrasound simulations use dummy data for demonstration
-Node.js backend, MongoDB database, and frontend served with React/Next.js
-Environment variables needed in backend .env:
-
+---
