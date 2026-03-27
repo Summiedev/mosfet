@@ -1,6 +1,7 @@
 ## RadFlow: Real-Time Radiology Workflow Assistant
 
-RadFlow is a real-time radiology workflow assistant designed to improve the speed, accuracy, and safety of ultrasound in high-volume, resource-constrained hospital environments. It streamlines the entire ultrasound workflow, from patient registration to scan review and report generation, with a focus on usability and automation.
+RadFlow is a real-time radiology workflow assistant designed to improve the speed, accuracy, and safety of ultrasound in high-volume, resource-constrained hospital environments. It improves the entire ultrasound workflow: ensuring every scan has a clear clinical indication, reducing missed diagnoses, {especially in: Breast ultrasound (cancer detection), Fetal ultrasound (maternal and fetal anomalies) and Abdominal Ultrasound}; eliminating incomplete scans through structured guidance; reduce reporting time via automation and enables early detection and prioritization of critical cases.
+
 
 ---
 
