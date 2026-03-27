@@ -29,7 +29,7 @@ export default function VerifyOTPPage() {
     }, [otp])
 
     return (
-        <div className="min-h-screen bg-blue flex items-center justify-center p-4">
+        <div className="min-h-screen bg-[#020618] flex items-center justify-center p-4">
             <div className="w-full max-w-md">
                 <div className="bg-[#0F172B] backdrop-blur border border-slate-700/50 rounded-2xl p-8 space-y-8">
                     {/* Logo */}
