@@ -92,7 +92,7 @@ export default function StartScanPage() {
                             <div className="space-y-2">
                                 <label className="text-sm font-medium text-slate-200 flex items-center gap-2">
                                     <Contact className="w-5 h-5 text-[#7C86FF]" />
-                                    <div/>
+                                   
                                     Patient Name
                                 </label>
                                 <Input
@@ -191,13 +191,14 @@ export default function StartScanPage() {
                         />
                     </div>
 
-                    <Button
-                        onClick={handleStartScan}
-                        disabled={loading}
-                        className="w-full bg-[#4F39F6] hover:opacity-90 text-white font-medium py-2 rounded-lg"
-                    >
-                        {loading ? 'Starting…' : 'Start Scan →'}
-                    </Button>
+                     <Button
+            onClick={handleStartScan}
+            disabled={loading}
+            className="w-full bg-[#4F39F6] hover:opacity-90 text-white font-medium py-2 rounded-lg"
+        >
+            {loading ? 'Starting…' : 'Start Scan →'}
+        </Button>
+    </form>  
                 </Card>
             </div>
         </div>
