@@ -69,4 +69,18 @@ Password: `SecurdeP@sseeword123`
 - Designed the entire user experience and interface using Figma.
 - Ensured accessibility and usability best practices throughout the design.
 
----
+---<img width="1553" height="949" alt="Login" src="https://github.com/user-attachments/assets/6e09fa6b-8b41-41f9-a3fd-1d0235f2f4f7" />
+<img width="1553" height="944" alt="Login(1)" src="https://github.com/user-attachments/assets/910136c2-4e4a-4015-b509-0e4535735737" />
+<img width="1553" height="944" alt="OTP" src="https://github.com/user-attachments/assets/8a7a2626-9480-4bc1-8074-53c4f280b034" />
+<img width="1553" height="944" alt="dashboard" src="https://github.com/user-attachments/assets/bab9a1e5-72dc-482f-9490-4f40e7fe793d" />
+<img width="1553" height="1073" alt="new scan" src="https://github.com/user-attachments/assets/e9be2d0b-35a2-4701-97ec-6900714a01ca" />
+<img width="1553" height="1052" alt="sscan view" src="https://github.com/user-attachments/assets/ed83e837-35b4-48aa-afc5-4d9f0f2799c2" />
+<img width="1553" height="1052" alt="sscan view(1)" src="https://github.com/user-attachments/assets/1ab1cefc-9f3c-44a4-8655-0898752e4f04" />
+<img width="1553" height="944" alt="Create Styleguide Page" src="https://github.com/user-attachments/assets/f619e347-8e4f-4b3c-ae69-11446bbd9e0a" />
+<img width="1553" height="1052" alt="Create Styleguide Page(1)" src="https://github.com/user-attachments/assets/c1e4a538-43d3-477f-b5a5-7c2d82d72a29" />
+<img width="1553" height="1102" alt="review" src="https://github.com/user-attachments/assets/00e471f4-ecea-4182-a8e7-70fbd2c8aa94" />
+<img width="1553" height="944" alt="report successful(1)" src="https://github.com/user-attachments/assets/dcfc6d6c-a0bf-406b-80e3-750b1f5757c1" />
+<img width="1553" height="944" alt="report successful" src="https://github.com/user-attachments/assets/11f584af-f5b6-487a-abf8-e207e6b637c1" />
+
+
+
