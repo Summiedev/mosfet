@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { ArrowLeft, AlertCircle } from 'lucide-react'
+import { ArrowLeft, AlertCircle, Activity, Contact } from 'lucide-react'
 import Link from 'next/link'
 import { Sidebar } from '@/components/sidebar'
 
@@ -38,26 +38,27 @@ export default function StartScanPage() {
             {/* Main Content */}
             <div className="flex-1 ml-64 p-8">
                 {/* Header */}
-                <div className="flex items-center gap-4 mb-8">
+                <div className="flex items-center gap-4 mb-8 pb-6 border-b border-[#1E2433]">
                     <Link href="/dashboard">
-                        <Button variant="ghost" size="icon" className="text-slate-400 hover:text-slate-300">
+                        <Button variant="ghost" size="icon" className="text-[#9CA3AF] hover:text-white">
                             <ArrowLeft className="w-5 h-5" />
                         </Button>
                     </Link>
                     <div>
-                        <h1 className="text-3xl font-bold text-white">Start New Scan</h1>
-                        <p className="text-sm text-slate-400">Enter minimal details to anchor the scan in clinical context.</p>
+                        <h1 className="text-2xl font-bold text-white">Start New Scan</h1>
+                        <p className="text-sm text-[#9CA3AF]">Enter minimal details to anchor the scan in clinical context.</p>
                     </div>
                 </div>
 
                 {/* Form Card */}
-                <Card className="bg-[#0F172B] border-[#1D293D] border-t-2 border-b-2 p-8 max-w-2xl">
+                <Card className="bg-[#0F172B]  border-[#1D293D] border-t-2 border-b-2 p-8 max-w-2xl mx-auto mt-35">
                     <form className="space-y-6">
                         {/* Patient Info Row */}
                         <div className="grid grid-cols-2 gap-6">
                             <div className="space-y-2">
                                 <label className="text-sm font-medium text-slate-200 flex items-center gap-2">
-                                    <div className="w-4 h-4 rounded-full border border-blue-400" />
+                                    <Contact className="w-5 h-5 text-[#7C86FF]" />
+                                    <div/>
                                     Patient Name
                                 </label>
                                 <Input
@@ -69,7 +70,8 @@ export default function StartScanPage() {
                             </div>
                             <div className="space-y-2">
                                 <label className="text-sm font-medium text-slate-200 flex items-center gap-2">
-                                    <div className="w-4 h-4 rounded-full border border-blue-400" />
+                                    <Activity className="w-5 h-5 text-[#7C86FF]" />
+                                    <div/>
                                     Scan Type
                                 </label>
                                 <Input
