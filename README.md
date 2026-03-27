@@ -4,12 +4,12 @@ RadFlow is a real-time radiology workflow assistant designed to improve the spee
 
 ---
 
-## 🌐 Live Demo
+## Live Demo
 Access the project at: [https://mosfet.onrender.com/]
 
 ---
 
-## 🔑 Login Credentials
+## Login Credentials
 **Admin**  
 Email: `admin23@gmail.com`  
 Password: `SecurdeP@sseeword123`
