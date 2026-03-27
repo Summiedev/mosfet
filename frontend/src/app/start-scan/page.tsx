@@ -6,36 +6,70 @@ import { Input } from '@/components/ui/input'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { ArrowLeft, AlertCircle, Activity, Contact } from 'lucide-react'
+
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { Sidebar } from '@/components/sidebar'
+import { patientsApi, scansApi } from '@/utils/endpoints'
 
 const QUICK_REASONS = [
     "There's a lump",
     'Routine screening',
-    'Follow-up on previous mass'
+    'Follow-up on previous mass',
 ]
 
+const SCAN_TYPES = ['Fetal Ultrasound', 'Breast Ultrasound', 'Abdominal Ultrasound', 'Thyroid Ultrasound']
+
 export default function StartScanPage() {
+    const router = useRouter()
     const [patientName, setPatientName] = useState('')
+    const [patientPhone, setPatientPhone] = useState('')
     const [scanType, setScanType] = useState('')
-    const [reason, setReason] = useState('')
     const [selectedReasons, setSelectedReasons] = useState<string[]>([])
+    const [customReason, setCustomReason] = useState('')
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState('')
 
-    const toggleReason = (r: string) => {
-        setSelectedReasons(prev =>
-            prev.includes(r) ? prev.filter(x => x !== r) : [...prev, r]
-        )
-    }
+    const toggleReason = (r: string) =>
+        setSelectedReasons(prev => prev.includes(r) ? prev.filter(x => x !== r) : [...prev, r])
 
-    const handleStartScan = () => {
-        // Handle scan start
+    const handleStartScan = async () => {
+        if (!patientName || !scanType) {
+            setError('Patient name and scan type are required.')
+            return
+        }
+        setError('')
+        setLoading(true)
+
+        try {
+            // 1. Create or look up the patient
+            const patient = await patientsApi.create({
+                name: patientName,
+                phone: patientPhone || undefined,
+            })
+
+            // 2. Build clinical indication from selected reasons + custom text
+            const indication = [...selectedReasons, customReason].filter(Boolean).join('; ') || 'Not specified'
+
+            // 3. Create the scan
+            const scan = await scansApi.create({
+                patient_id: patient.id,
+                scan_type: scanType,
+                clinical_indication: indication,
+            })
+
+            // 4. Navigate to the scan view
+            router.push(`/scan-view?id=${scan.id}`)
+        } catch (err: unknown) {
+            setError(err instanceof Error ? err.message : 'Failed to start scan')
+        } finally {
+            setLoading(false)
+        }
     }
 
     return (
         <div className="min-h-screen bg-[#020618] flex">
             <Sidebar />
-
-            {/* Main Content */}
             <div className="flex-1 ml-64 p-8">
                 {/* Header */}
                 <div className="flex items-center gap-4 mb-8 pb-6 border-b border-[#1E2433]">
@@ -83,54 +117,87 @@ export default function StartScanPage() {
                             </div>
                         </div>
 
-                        {/* Why is this scan being done */}
-                        <div className="space-y-3">
-                            <div className="flex items-center gap-2 text-amber-400">
-                                <AlertCircle className="w-4 h-4" />
-                                <label className="font-semibold">Why is this scan being done?</label>
-                            </div>
-                            <p className="text-sm text-slate-400">
-                                Provide brief clinical context. E.g. &quot;Patient reports a palpable lump in the upper outer quadrant.&quot;
-                            </p>
-                            <textarea
-                                placeholder="Enter reason or clinical indication..."
-                                value={reason}
-                                onChange={(e) => setReason(e.target.value)}
-                                className="w-full bg-[#020618] border border-slate-700/50 rounded-lg p-3 text-white placeholder:text-slate-500 text-sm"
-                                rows={4}
-                            />
-                            <div className="flex gap-2 flex-wrap">
-                                {QUICK_REASONS.map((r) => (
-                                    <Badge
-                                        key={r}
-                                        onClick={() => toggleReason(r)}
-                                        className={`cursor-pointer transition-colors ${selectedReasons.includes(r)
-                                                ? 'bg-[slate-600] text-white'
-                                                : 'bg-slate-700/50 text-slate-300 hover:bg-slate-600'
-                                            }`}
-                                    >
-                                        {r}
-                                    </Badge>
-                                ))}
-                            </div>
-                        </div>
+                    {error && (
+                        <p className="text-sm text-red-400 bg-red-400/10 border border-red-400/20 rounded-lg px-4 py-2">
+                            {error}
+                        </p>
+                    )}
 
-                        {/* Note */}
-                        <div className="bg-slate-700/30 border border-slate-600/50 rounded-lg p-4">
-                            <p className="text-xs text-slate-300">
-                                <strong>Note:</strong> Date of arrival is automatically recorded. Clinical context is critical for accurate scanning and reporting.
-                            </p>
-                        </div>
+                    {/* Patient name */}
+                    <div className="space-y-2">
+                        <label className="text-sm font-medium text-[#CAD5E2]">Patient Name *</label>
+                        <Input
+                            placeholder="Full name"
+                            value={patientName}
+                            onChange={(e) => setPatientName(e.target.value)}
+                            className="bg-[#020618] border-[#314158] text-white placeholder-slate-500"
+                        />
+                    </div>
 
-                        {/* Start Button */}
-                        <Button
-                            type="button"
-                            onClick={handleStartScan}
-                            className="w-full bg-[#4F39F6] hover:to-purple-700 text-white font-medium py-3 rounded-lg transition-all"
-                        >
-                            Start Scan
-                        </Button>
-                    </form>
+                    {/* Patient phone */}
+                    <div className="space-y-2">
+                        <label className="text-sm font-medium text-[#CAD5E2]">Patient Phone (optional)</label>
+                        <Input
+                            placeholder="+234 XXX XXX XXXX"
+                            value={patientPhone}
+                            onChange={(e) => setPatientPhone(e.target.value)}
+                            className="bg-[#020618] border-[#314158] text-white placeholder-slate-500"
+                        />
+                    </div>
+
+                    {/* Scan type */}
+                    <div className="space-y-2">
+                        <label className="text-sm font-medium text-[#CAD5E2]">Scan Type *</label>
+                        <div className="grid grid-cols-2 gap-2">
+                            {SCAN_TYPES.map((t) => (
+                                <button
+                                    key={t}
+                                    onClick={() => setScanType(t)}
+                                    className={`text-sm px-4 py-2 rounded-lg border transition-colors ${
+                                        scanType === t
+                                            ? 'bg-[#4F39F6] border-[#4F39F6] text-white'
+                                            : 'bg-[#020618] border-[#314158] text-[#90A1B9] hover:border-[#615FFF]'
+                                    }`}
+                                >
+                                    {t}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Clinical indication */}
+                    <div className="space-y-2">
+                        <label className="text-sm font-medium text-[#CAD5E2]">Clinical Indication</label>
+                        <div className="flex flex-wrap gap-2 mb-2">
+                            {QUICK_REASONS.map((r) => (
+                                <button
+                                    key={r}
+                                    onClick={() => toggleReason(r)}
+                                    className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
+                                        selectedReasons.includes(r)
+                                            ? 'bg-[#4F39F6] border-[#4F39F6] text-white'
+                                            : 'bg-transparent border-[#314158] text-[#90A1B9] hover:border-[#615FFF]'
+                                    }`}
+                                >
+                                    {r}
+                                </button>
+                            ))}
+                        </div>
+                        <Input
+                            placeholder="Or type a custom reason…"
+                            value={customReason}
+                            onChange={(e) => setCustomReason(e.target.value)}
+                            className="bg-[#020618] border-[#314158] text-white placeholder-slate-500"
+                        />
+                    </div>
+
+                    <Button
+                        onClick={handleStartScan}
+                        disabled={loading}
+                        className="w-full bg-[#4F39F6] hover:opacity-90 text-white font-medium py-2 rounded-lg"
+                    >
+                        {loading ? 'Starting…' : 'Start Scan →'}
+                    </Button>
                 </Card>
             </div>
         </div>
