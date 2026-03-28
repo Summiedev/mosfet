@@ -52,7 +52,7 @@ export default function DashboardPage() {
                                 <div>
                                     <p className="text-sm text-[#A5B4D3] mb-2">Waiting</p>
                                     <p className="text-3xl font-bold text-[#5B8DEF]">
-                                        {loading ? '–' : data?.waiting ?? 0}
+                                          {loading ? '–' : (data ? data.waiting : 0)}
                                     </p>
                                 </div>
                                 <Clock className="w-6 h-6 text-[#5B8DEF]" />
