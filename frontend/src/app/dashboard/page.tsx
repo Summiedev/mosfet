@@ -35,7 +35,7 @@ type DashboardResponse = {
   pending_scans: Scan[]       // in_progress + pending
   recent_completed: Scan[]    // completed within 48 h
   critical_cases: Scan[]      // high / critical risk
-  total_today: int
+  total_today: number
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
