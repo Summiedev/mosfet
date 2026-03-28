@@ -118,16 +118,16 @@ export default function DashboardPage() {
 
       <div className="flex-1 ml-64 flex flex-col">
         <Topbar
-          title={`Good morning, Dr. ${userName}`}
-          action={
-            <Button
-              onClick={() => router.push('/start-scan')}
-              className="bg-[#4F39F6] hover:opacity-90 text-white text-sm font-medium px-4 py-2 rounded-lg"
-            >
-              + Start New Scan
-            </Button>
-          }
-        />
+  title={`Good morning, Dr. ${userName}`}
+  actionButton={
+    <Button
+      onClick={() => router.push('/start-scan')}
+      className="bg-[#4F39F6] hover:opacity-90 text-white text-sm font-medium px-4 py-2 rounded-lg"
+    >
+      + Start New Scan
+    </Button>
+  }
+/>
 
         <div className="p-8">
 
