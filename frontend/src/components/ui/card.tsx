@@ -1,20 +1,23 @@
 import * as React from "react"
 
-export function Card({
-  children,
-  className = "",
-}: {
+
+interface CardProps {
   children: React.ReactNode
   className?: string
-}) {
+  onClick?: () => void
+}
+
+export function Card({ children, className = "", onClick }: CardProps) {
   return (
     <div
-      className={`rounded-xl border shadow-sm ${className}`}
+      className={`rounded-xl border shadow-sm ${className} ${onClick ? "cursor-pointer" : ""}`}
+      onClick={onClick}
     >
       {children}
     </div>
   )
 }
+
 
 export function CardHeader({
   children,
